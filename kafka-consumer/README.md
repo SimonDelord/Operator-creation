@@ -15,3 +15,10 @@ As part of the build it is possible to specify 3 parameters:
 The defaults are respectively - 172.30.113.193:9092 / acs-topic-5 / eda-topic
 
 So an example of deploying this container onto OpenShift would be - see the screenshot below
+
+![Browser](https://github.com/SimonDelord/Operator-creation/blob/main/kafka-consumer/images/Creating-From-container-image-1.png)
+![Browser](https://github.com/SimonDelord/Operator-creation/blob/main/kafka-consumer/images/Creating-From-container-image-2.png)
+
+<p align=center>  Deploying the Container Image from OCP Console </p>
+
+
