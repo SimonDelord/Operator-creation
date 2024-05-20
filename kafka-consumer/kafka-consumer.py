@@ -42,9 +42,10 @@ def main():
 #      }
 
       kafka_message = {
-      "cluster": message.value['alert']['clusterName'],
-      "namespace": message.value['alert']['namespace'],
-      "deployment": message.value['alert']['deployment']['name']
+      "name": message.value['name']
+#      "cluster": message.value['alert']['clusterName'],
+#      "namespace": message.value['alert']['namespace'],
+#      "deployment": message.value['alert']['deployment']['name']
       }
 
       logger.info(kafka_message)
