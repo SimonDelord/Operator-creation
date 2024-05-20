@@ -1,6 +1,11 @@
 # Inherit python image
 FROM python:3.6-slim
 
+#add the variables used to build the Python App
+ENV BOOTSTRAP_SERVER="172.30.113.193:9092"
+ENV KAFKA_TOPIC="acs-topic-5"
+ENV KAFKA_TOPIC_2="eda-topic"
+
 # Set up directories
 RUN mkdir /application
 WORKDIR /application
