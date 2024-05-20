@@ -16,6 +16,12 @@ The defaults are respectively - 172.30.113.193:9092 / acs-topic-5 / eda-topic
 
 So an example of deploying this container onto OpenShift would be - see the screenshot below
 
+Go into Developer View -> Add -> Container Image
+
+Then paste the url for the container image (here - quay.io/rhn_support_sdelord/kafka/kafka-consumer)
+
+Then click on Deployment where "Click on the names to access advanced options for Health checks, Deployments, Scaling, Resource limits and Labels to add the variables.
+
 ![Browser](https://github.com/SimonDelord/Operator-creation/blob/main/kafka-consumer/images/Creating-From-container-image-1.png)
 ![Browser](https://github.com/SimonDelord/Operator-creation/blob/main/kafka-consumer/images/Creating-From-container-image-2.png)
 
