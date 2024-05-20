@@ -7,8 +7,8 @@ from kafka.consumer import KafkaConsumer
 from kafka import KafkaProducer
 
 #load_dotenv(verbose=True)
-#logging.basicConfig(level=logging.INFO)
-#logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 #def get_acs_parameters():
 
