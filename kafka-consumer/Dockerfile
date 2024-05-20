@@ -19,4 +19,4 @@ EXPOSE 8001
 STOPSIGNAL SIGINT
 
 ENTRYPOINT ["python"]
-CMD ["kafka-consumer-acs.py"]
+CMD ["kafka-consumer.py"]
