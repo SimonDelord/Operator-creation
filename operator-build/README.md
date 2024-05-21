@@ -20,8 +20,16 @@ then you deploy the operator
 ```
 cd webhook-kafka-operator-project/
 make install  (be sure to be in the folder where there is a MakeFile to run this command, so you may have to go back one up)....
-
+```
+you may have to create a set of roles or grand them rights
+```
 make deploy IMG=${IMAGE}
+
+oc policy add-role-to-user admin system:serviceaccount:simon-operator-system:simon-operator-controller-manager
+oc policy add-role-to-user admin system:serviceaccount:simon-operator-system:default
+oc policy add-role-to-user admin system:serviceaccount:simon-operator-system:deployer
+oc policy add-role-to-user admin system:serviceaccount:simon-operator-system:builder
+
 ```
 Then you can start deploying instances of the "operator"
 ```
