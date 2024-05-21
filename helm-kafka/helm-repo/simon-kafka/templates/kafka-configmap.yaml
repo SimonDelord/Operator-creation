@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kafka-configmap
+  namespace: simon-demo-2
+data:
+  KAFKA_TOPIC_KEY: {{ .Values.KAFKA_TOPIC}}
+  KAFKA_TOPIC_2_KEY: {{ .Values.KAFKA_TOPIC_2 }}
+  BOOTSTRAP_SERVER_KEY: {{ .Values.BOOTSTRAP_SERVER }}
