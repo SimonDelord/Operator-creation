@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kafka-configmap
+  namespace: simon-demo-2
+data:
+  KAFKA_TOPIC_KEY: acs-topic-6
+  KAFKA_TOPIC_2_KEY: acs-topic-5
+  BOOTSTRAP_SERVER_KEY: 172.30.113.193:9092
