@@ -1,5 +1,5 @@
 This is the repo describing how to build the Operator based on the Helm chart created in the previous step
-
+```
 mkdir webhook-kafka-operator
 cd webhook-kafka-operator/
 export OPERATOR_NAME=webhook-kafka
@@ -13,10 +13,11 @@ operator-sdk init --plugins=helm --domain frenchidiot.com --helm-chart-repo /hom
 operator-sdk create api --helm-chart=/home/ec2-user/Operator-SRE/helm-chart-kafka/simon-kafka/
 docker login quay.io -u $DOCKER_USERNAME
 make docker-build docker-push IMG=${IMAGE}
-
+```
 don't forget to make it visible in quay.io
-
+```
 cd webhook-kafka-operator-project/
 make install
 
 oc apply -f config/samples/charts_v1alpha1_simonkafka.yaml
+```
