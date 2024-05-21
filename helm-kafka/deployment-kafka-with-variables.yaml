@@ -1,0 +1,53 @@
+# This file shows how to pass the variables to the PoD at build time directly as variables defined in the Deployment.yaml file
+
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  annotations:
+    alpha.image.policy.openshift.io/resolve-names: '*'
+    app.openshift.io/route-disabled: 'false'
+    deployment.kubernetes.io/revision: '1'
+  name: simon-kafka-consumer
+  namespace: simon-demo-2
+  labels:
+    app: simon-kafka-consumer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simon-kafka-consumer
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: simon-kafka-consumer
+        deployment: simon-kafka-consumer
+    spec:
+      containers:
+        - name: basic-kafka-consumer
+          image: >-
+            quay.io/rhn_support_sdelord/kafka/kafka-consumer
+          env:
+          - name: KAFKA_TOPIC
+            value: acs-topic-6
+          - name : KAFKA_TOPIC_2
+            value: acs-topic-5
+          ports:
+            - containerPort: 8001
+              protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
