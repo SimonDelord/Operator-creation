@@ -76,3 +76,7 @@ data:
   BOOTSTRAP_SERVER_KEY: 172.30.113.193:9092
 
 ```
+
+
+### Step 2 - Create a Helm Chart based of the Deployment and ConfigMap files
+
