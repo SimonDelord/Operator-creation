@@ -17,7 +17,7 @@ make docker-build docker-push IMG=${IMAGE}
 don't forget to make it visible in quay.io
 ```
 cd webhook-kafka-operator-project/
-make install
+make install  (be sure to be in the folder where there is a MakeFile to run this command, so you may have to go back one up)....
 
 oc apply -f config/samples/charts_v1alpha1_simonkafka.yaml
 ```
