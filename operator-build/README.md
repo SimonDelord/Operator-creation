@@ -9,8 +9,12 @@ export DOCKER_USERNAME=rhn_support_sdelord
 export IMAGE=quay.io/${DOCKER_USERNAME}/${OPERATOR_NAME}:${OPERATOR_VERSION}
 mkdir -p ${OPERATOR_PROJECT}
 
-operator-sdk init --plugins=helm --domain frenchidiot.com --helm-chart-repo /home/ec2-user/Operator-SRE/helm-chart-kafka/simon-kafka/
-operator-sdk create api --helm-chart=/home/ec2-user/Operator-SRE/helm-chart-kafka/simon-kafka/
+#operator-sdk init --plugins=helm --domain frenchidiot.com --helm-chart-repo /home/ec2-user/Operator-SRE/helm-chart-kafka/simon-kafka/
+#operator-sdk create api --helm-chart=/home/ec2-user/Operator-SRE/helm-chart-kafka/simon-kafka/
+
+operator-sdk init --plugins=helm --domain frenchidiot.com --helm-chart-repo /home/ec2-user/Operator-SRE/helm-chart-second/simon-kafka/
+operator-sdk create api --helm-chart=/home/ec2-user/Operator-SRE/helm-chart-second/simon-kafka/
+
 docker login quay.io -u $DOCKER_USERNAME
 make docker-build docker-push IMG=${IMAGE}
 ```
