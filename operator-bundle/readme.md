@@ -57,3 +57,7 @@ bundle
 
 4 directories, 6 files
 ```
+
+The manual setup of on-boarding the operator into the catalog is the following:
+- create a catalogSource
+- create a subscription (e.g as a way of installing the operator bundle)
