@@ -59,5 +59,6 @@ bundle
 ```
 
 The manual setup of on-boarding the operator into the catalog is the following:
-- create a catalogSource
+- create a CatalogFile (either via Raw Catalog Files or using the Catalog File template) and via the opm cli create a container image of this catalog file and point your catalogSource towards it
+- create a catalogSource (and point it to the image that was created in the previous step)
 - create a subscription (e.g as a way of installing the operator bundle)
