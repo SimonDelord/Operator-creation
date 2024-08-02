@@ -1,0 +1,5 @@
+Flask == 1.1.4
+flask-cors == 4.0.0
+kafka-python==2.0.2
+fastapi[all]== 0.75.1
+python-dotenv==0.20.0
