@@ -6,7 +6,7 @@ metadata:
     app.openshift.io/route-disabled: 'false'
     deployment.kubernetes.io/revision: '1'
   name: simon-kafka-consumer-configmap
-  namespace: simon-demo-2
+  namespace: {{ .Values.NAMESPACE }}
   labels:
     app: simon-kafka-consumer-configmap
 spec:
