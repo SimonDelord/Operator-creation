@@ -14,9 +14,13 @@ docker login quay.io -u $DOCKER_USERNAME
 make docker-build docker-push IMG=${IMAGE}
 ```
 don't forget to make it visible in quay.io
+
 then you deploy the operator
+
 ```
 cd webhook-kafka-operator-project/
+```
+
 you may have to create a set of roles or grand them rights
 ok there are multiple "tweaks" I had to do to get this shit running
 
@@ -56,7 +60,11 @@ config/default/manager_auth_proxy_patch.yaml
 configu/manager/manager.yaml
 
 change memory to 4Gi and cpu to 1 for example
+to check where to make modifications you can search the word memory using the following command
 
+```
+grep -Rnw 'config/' -e 'memory'
+```
 
 ```
 make install  (be sure to be in the folder where there is a MakeFile to run this command, so you may have to go back one up)....
