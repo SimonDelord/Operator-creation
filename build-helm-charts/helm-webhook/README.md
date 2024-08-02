@@ -1,102 +1,52 @@
 This is the repo that is now trying to create a helm chart to deploy the container image created in the build-container-image/webhook-kafka folder.
 
-### Step 1 - Create a Deployment.yaml and ConfigMap.yaml artefacts
+### Step 1 - Create the various files for the Helm Template and the helm chart
 
-```
-    spec:
-      containers:
-        - name: basic-kafka-consumer-configmap
-          image: >-
-            quay.io/rhn_support_sdelord/kafka/kafka-consumer
-          env:
-          - name: KAFKA_TOPIC
-            valueFrom:
-              configMapKeyRef:
-                name: kafka-configmap
-                key: KAFKA_TOPIC_KEY
-          - name : KAFKA_TOPIC_2
-            valueFrom:
-              configMapKeyRef:
-                name: kafka-configmap
-                key: KAFKA_TOPIC_2_KEY
-          - name: BOOTSTRAP_SERVER
-            valueFrom:
-              configMapKeyRef:
-                name: kafka-configmap
-                key: BOOTSTRAP_SERVER_KEY
-          ports:
-            - containerPort: 8001
-              protocol: TCP
-
-
-======================================
-
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: kafka-configmap
-  namespace: simon-demo-2
-data:
-  KAFKA_TOPIC_KEY: acs-topic-6
-  KAFKA_TOPIC_2_KEY: acs-topic-5
-  BOOTSTRAP_SERVER_KEY: 172.30.113.193:9092
-
-```
-
-
-### Step 2 - Create a Helm Chart based of the Deployment and ConfigMap files
-
-
-then you type
 ```
 helm create webhook-kafka
 ```
 
-You would typically prune a few of the files created, until you get the following
+Remove unnecessary files. The final structure should look like the following
 
 ```
-[root@ip-10-124-3-196 helm-chart-kafka]# tree
-.
-└── simon-kafka
-    ├── charts
-    ├── Chart.yaml
-    ├── templates
-    │   ├── _helpers.tpl
-    │   ├── kafka-configmap.yaml
-    │   └── kafka-pod-deployment-with-configmap.yaml
-    └── values.yaml
-```
-
-and all the files are in this git repo folder
-
-but I'm just pasting in here some of the configuration for the values.yaml and the kafka-configmap.yaml
+tree webhook-kafka/
+webhook-kafka/
+├── charts
+├── Chart.yaml
+├── templates
+│   ├── deployment.yaml
+│   ├── _helpers.tpl
+│   ├── route.yaml
+│   ├── service.yaml
+│   └── webhook-configmap.yaml
+└── values.yaml
 
 ```
-[root@ip-10-124-3-196 helm-chart-kafka]# cat simon-kafka/templates/kafka-configmap.yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: kafka-configmap
-  namespace: simon-demo-2
-data:
-  KAFKA_TOPIC_KEY: {{ .Values.KAFKA_TOPIC}}
-  KAFKA_TOPIC_2_KEY: {{ .Values.KAFKA_TOPIC_2 }}
-  BOOTSTRAP_SERVER_KEY: {{ .Values.BOOTSTRAP_SERVER }}
-```
 
-and for values.yaml
+All the files are in the webhook-kafka folder.
 
-```
-[root@ip-10-124-3-196 helm-chart-kafka]# cat simon-kafka/values.yaml
-KAFKA_TOPIC: acs-topic-6
-KAFKA_TOPIC_2: acs-topic-5
-BOOTSTRAP_SERVER: 172.30.113.193:9092
-[root@ip-10-124-3-196 helm-chart-kafka]#
+
 ```
 
 You are then able to deploy your helm chart using the following command
 
 ```
- helm install simon-helm ./simon-kafka/
+ helm install webhook ./webhook-kafka/
 ```
 
+You can test that the webhook is working by using the following command
+
+```
+curl -X POST http://webhook-kafka-simon-demo.apps.rosa-mw5w8.9knj.p1.openshiftapps.com/webhook -H "Content-type:application/json" -d '{"username":"simon","password":"garlic"}'
+
+```
+and check the logs on the PoD
+
+```
+INFO:kafka.conn:Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+INFO:kafka.conn:<BrokerConnection node_id=2 host=my-cluster-kafka-2.my-cluster-kafka-brokers.simon-kafka.svc:9092 <connecting> [IPv4 ('10.131.2.93', 9092)]>: connecting to my-cluster-kafka-2.my-cluster-kafka-brokers.simon-kafka.svc:9092 [('10.131.2.93', 9092) IPv4]
+INFO:kafka.conn:<BrokerConnection node_id=2 host=my-cluster-kafka-2.my-cluster-kafka-brokers.simon-kafka.svc:9092 <connecting> [IPv4 ('10.131.2.93', 9092)]>: Connection complete.
+INFO:kafka.conn:<BrokerConnection node_id=bootstrap-0 host=172.30.156.161:9092 <connected> [IPv4 ('172.30.156.161', 9092)]>: Closing connection.
+INFO:kafka.conn:<BrokerConnection node_id=2 host=my-cluster-kafka-2.my-cluster-kafka-brokers.simon-kafka.svc:9092 <connected> [IPv4 ('10.131.2.93', 9092)]>: Closing connection.
+INFO:werkzeug:10.130.2.9 - - [02/Aug/2024 07:16:55] "POST /webhook HTTP/1.1" 200 
+```
