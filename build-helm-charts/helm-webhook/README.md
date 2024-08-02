@@ -24,10 +24,6 @@ webhook-kafka/
 ```
 
 All the files are in the webhook-kafka folder.
-
-
-```
-
 You are then able to deploy your helm chart using the following command
 
 ```
@@ -38,8 +34,8 @@ You can test that the webhook is working by using the following command
 
 ```
 curl -X POST http://webhook-kafka-simon-demo.apps.rosa-mw5w8.9knj.p1.openshiftapps.com/webhook -H "Content-type:application/json" -d '{"username":"simon","password":"garlic"}'
-
 ```
+
 and check the logs on the PoD
 
 ```
