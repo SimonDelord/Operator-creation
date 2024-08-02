@@ -19,3 +19,9 @@ You then do the following
  podman push localhost/kafka-consumer:latest quay.io/rhn_support_sdelord/kafka/kafka-consumer:latest
 
 ```
+
+The container image is available at
+
+```
+podman pull quay.io/rhn_support_sdelord/kafka/kafka-consumer
+```
