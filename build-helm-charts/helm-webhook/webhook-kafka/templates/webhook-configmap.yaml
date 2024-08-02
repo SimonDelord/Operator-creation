@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: webhook-configmap
+  namespace: {{ .Values.NAMESPACE }}
+data:
+  KAFKA_TOPIC_KEY: {{ .Values.KAFKA_TOPIC}}
+  WEBHOOK_ROUTE_KEY: {{ .Values.WEBHOOK_ROUTE }}
+  BOOTSTRAP_SERVER_KEY: {{ .Values.BOOTSTRAP_SERVER }}
