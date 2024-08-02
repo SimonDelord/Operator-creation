@@ -1,0 +1,16 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: webhook-kafka
+  labels:
+    app: webhook-kafka
+  annotations:
+    openshift.io/host.generated: 'true'
+spec:
+  to:
+    kind: Service
+    name: webhook-kafka
+    weight: 100
+  port:
+    targetPort: 8001-tcp
+  wildcardPolicy: None
