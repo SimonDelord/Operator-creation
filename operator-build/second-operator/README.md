@@ -70,12 +70,10 @@ grep -Rnw 'config/' -e 'memory'
 make install  (be sure to be in the folder where there is a MakeFile to run this command, so you may have to go back one up)....
 make deploy IMG=${IMAGE}
 ```
-
-```
 Then you can start deploying instances of the "operator"
 
 ```
-oc apply -f config/samples/charts_v1alpha1_simonkafka.yaml
+oc apply -f config/samples/charts_v1alpha1_webhookkafka.yaml
 ```
 when you need to remove everything do
 
