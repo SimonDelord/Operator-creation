@@ -16,6 +16,6 @@ You then do the following
 
  podman build --tag kafka-consumer .
  podman login
- podman push localhost/webhook-kafka:latest quay.io/rhn_support_sdelord/kafka/kafka-consumer:latest
+ podman push localhost/kafka-consumer:latest quay.io/rhn_support_sdelord/kafka/kafka-consumer:latest
 
 ```
