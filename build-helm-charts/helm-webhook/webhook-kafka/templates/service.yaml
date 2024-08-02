@@ -1,0 +1,20 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: webhook-kafka
+  namespace: {{ .Values.NAMESPACE }}
+  labels:
+    app: webhook-kafka
+spec:
+  ports:
+    - name: 8001-tcp
+      protocol: TCP
+      port: 8001
+      targetPort: 8001
+  internalTrafficPolicy: Cluster
+  type: ClusterIP
+  ipFamilyPolicy: SingleStack
+  sessionAffinity: None
+  selector:
+    app: webhook-kafka
+    deployment: webhook-kafka
