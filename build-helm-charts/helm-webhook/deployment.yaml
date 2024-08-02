@@ -33,11 +33,11 @@ spec:
               configMapKeyRef:
                 name: webhook-configmap
                 key: KAFKA_TOPIC_KEY
-          - name : KAFKA_TOPIC_2
+          - name : WEBHOOK_ROUTE
             valueFrom:
               configMapKeyRef:
                 name: webhook-configmap
-                key: WEBHOOK_ROUTE
+                key: WEBHOOK_ROUTE_KEY
           - name: BOOTSTRAP_SERVER
             valueFrom:
               configMapKeyRef:
