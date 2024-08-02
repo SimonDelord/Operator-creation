@@ -1,3 +1,4 @@
 KAFKA_TOPIC: acs-topic-6
 KAFKA_TOPIC_2: acs-topic-5
 BOOTSTRAP_SERVER: 172.30.113.193:9092
+NAMESPACE: simon-demo
