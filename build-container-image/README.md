@@ -15,3 +15,5 @@ podman build --tag kafka-consumer .
 
 podman push localhost/kafka-consumer:latest quay.io/USERNAME/FOLDER/kafka-consumer:latest
 ```
+
+Both folders kafka-consumer and webhook-kafka represent each the folder structure to run the command above.
