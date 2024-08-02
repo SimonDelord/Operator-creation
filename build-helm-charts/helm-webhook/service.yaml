@@ -6,9 +6,6 @@ metadata:
   labels:
     app: webhook-kafka
 spec:
-  clusterIP: 
-  ipFamilies:
-    - IPv4
   ports:
     - name: 8001-tcp
       protocol: TCP
