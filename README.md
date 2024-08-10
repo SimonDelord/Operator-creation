@@ -13,14 +13,29 @@ There are a set of folders / subfolders in here.
 
 ## The Problem Statement
 
-As part of a previous demo built in collaboration with my colleagues Derek Waters and Shane Boulden, see [here](https://github.com/SimonDelord/ACS-Kafka-Demo-), we showed that it is possible to create two simple microservices to provide a simple way to integrate ACS and EDA for AAP via a Kafka layer. This is presented in the figure below.
+As part of a previous demo built in collaboration with my colleagues Derek Waters and Shane Boulden, see [here](https://github.com/SimonDelord/ACS-Kafka-Demo-), we showed that it is possible to create two simple microservices to provide a simple way to integrate ACS and EDA for AAP via a Kafka layer. 
+
+This is presented in the figure below.
 
 ![Browser](https://github.com/SimonDelord/Operator-creation/blob/main/images/Problem-Statement-Figure-1.png)
 
-When we zoom in, we can see that the solution is made up of two different containers:
+When we zoom in, we can see that the solution incorporates two "in-house" developed containers:
  - a webhook and kafka producer
  - a microservice that listens on a specific topic, does data manipulation and exports the new data onto a different topic.
 
 This is presented in the figure below.
 
 ![Browser](https://github.com/SimonDelord/Operator-creation/blob/main/images/Problem-Statement-Figure-2.png)
+
+Because, I am really not a developer, I simply hacked my way through some Python code and harcoded some values in each of these containers, which is not great.
+
+Following that demo, I then realised that it would be a lot easier if I could simply make sure that those two functions I had created were made "more flexible" by providing:
+ - build time configuration of the various parameters (e.g Kafka server address, Kafka topics, URL for the webhook)
+ - run time monitoring of each these containers to make sure it could auto-correct / rebuild / scale / etc... based on specific metrics.
+
+So, it seemed like Kubernetes Operators were the way to go to achieve both.
+This "blog" / GitHub repo will then take you through all the steps I took to achieve the above.
+
+## First Step - Build the container images so it can receive variables at Run Time.
+
+
