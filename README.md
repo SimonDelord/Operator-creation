@@ -10,4 +10,4 @@ There are a set of folders / subfolders in here.
 - ACM-configuration: shows then how to deploy/configure these operators using ACM Policies and Applications (with or without ArgoCD).
 
 
-This is the demo link https://github.com/SimonDelord/ACS-Kafka-Demo-
+This is the demo link [here](https://github.com/SimonDelord/ACS-Kafka-Demo-)
