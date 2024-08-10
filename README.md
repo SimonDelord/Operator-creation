@@ -8,3 +8,6 @@ There are a set of folders / subfolders in here.
 - helm-kafka: shows how to create the helm chart to deploy the container image defined in the kafka-consumer repo
 - operator: shows then how to create the Operator based on the helm-chart in the previous repo
 - ACM-configuration: shows then how to deploy/configure these operators using ACM Policies and Applications (with or without ArgoCD).
+
+
+This is the demo link https://github.com/SimonDelord/ACS-Kafka-Demo-
