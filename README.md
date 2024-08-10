@@ -10,4 +10,17 @@ There are a set of folders / subfolders in here.
 - ACM-configuration: shows then how to deploy/configure these operators using ACM Policies and Applications (with or without ArgoCD).
 
 
-This is the demo link [here](https://github.com/SimonDelord/ACS-Kafka-Demo-)
+
+## The Problem Statement
+
+As part of a previous demo built in collaboration with my colleagues Derek Waters and Shane Boulden, see [here](https://github.com/SimonDelord/ACS-Kafka-Demo-), we showed that it is possible to create two simple microservices to provide a simple way to integrate ACS and EDA for AAP via a Kafka layer. This is presented in the figure below.
+
+![Browser](https://github.com/SimonDelord/Operator-creation/blob/main/images/Problem-Statement-Figure-1.png)
+
+When we zoom in, we can see that the solution is made up of two different containers:
+ - a webhook and kafka producer
+ - a microservice that listens on a specific topic, does data manipulation and exports the new data onto a different topic.
+
+This is presented in the figure below.
+
+![Browser](https://github.com/SimonDelord/Operator-creation/blob/main/images/Problem-Statement-Figure-2.png)
