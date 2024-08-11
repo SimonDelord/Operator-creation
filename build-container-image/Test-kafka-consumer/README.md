@@ -22,8 +22,8 @@ Then paste the url for the container image (here - quay.io/rhn_support_sdelord/k
 
 Then click on Deployment where "Click on the names to access advanced options for Health checks, Deployments, Scaling, Resource limits and Labels to add the variables.
 
-![Browser](https://github.com/SimonDelord/Operator-creation/blob/main/kafka-consumer/images/Creating-From-container-image-1.png)
-![Browser](https://github.com/SimonDelord/Operator-creation/blob/main/kafka-consumer/images/Creating-From-container-image-2.png)
+![Browser](https://github.com/SimonDelord/Operator-creation/blob/main/build-container-image/Test-kafka-consumer/images/Creating-From-container-image-1.png)
+![Browser](https://github.com/SimonDelord/Operator-creation/blob/main/build-container-image/Test-kafka-consumer/images/Creating-From-container-image-2.png)
 
 <p align=center>  Deploying the Container Image from OCP Console </p>
 
