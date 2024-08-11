@@ -38,4 +38,12 @@ This "blog" / GitHub repo will then take you through all the steps I took to ach
 
 ## First Step - Build the container images so it can receive variables at Run Time.
 
+The first step of this demo is to build container images, the details around how to do it are:
+ - in this folder for the general process using Podman [here](https://github.com/SimonDelord/Operator-creation/tree/main/build-container-image)
+ - in this folder for the webhook container [here](https://github.com/SimonDelord/Operator-creation/tree/main/build-container-image/webhook-kafka)
+ - in this folder for the kafka consumer/producer container [here](https://github.com/SimonDelord/Operator-creation/tree/main/build-container-image/kafka-consumer)
+
+Once you have done this, you can then verify that these two images can be deployed on OpenShift:
+
+
 
