@@ -36,6 +36,10 @@ Following that demo, I then realised that it would be a lot easier if I could si
 So, it seemed like Kubernetes Operators were the way to go to achieve both.
 This "blog" / GitHub repo will then take you through all the steps I took to achieve the above.
 
+## Overview - high sequence of steps
+
+TBD - add here the steps and a great diagram showing all those steps
+
 ## First Step - Build the container images so it can receive variables at Run Time.
 
 The first step of this demo is to build container images, the details around how to do it are:
@@ -46,5 +50,14 @@ The first step of this demo is to build container images, the details around how
 Once you have done this, you can then verify that these two images can be deployed on OpenShift:
  - in this folder, I have given an example on how to do it from the OpenShift console [here](https://github.com/SimonDelord/Operator-creation/tree/main/build-container-image/Test-kafka-consumer)
 
+## Second Step - Build a Helm Chart to deploy your container image and associated Kubernetes artefacts
 
+As part of this step, we then try and automate the configuration and deployment of the container images using Helm Charts.
+ - see [here](https://github.com/SimonDelord/Operator-creation/tree/main/build-helm-charts) for the overall approach
+ - see [here](https://github.com/SimonDelord/Operator-creation/tree/main/build-helm-charts/helm-webhook) for the detailed helm chart for the webhook container image
+ - see [here](https://github.com/SimonDelord/Operator-creation/tree/main/build-helm-charts/helm-kafka) for the detailed helm chart for the kafka consumer producer image
+
+Once you have done this, you can verify that both charts deploy properly and run tests (and check the logs for each of the PoDs).
+ - see here for the tests for the webhook (TBD)
+ - see here for the tests for the kafka container image (TBD)
 
