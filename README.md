@@ -44,8 +44,9 @@ The following diagram shows the high level sequence of steps for creating and de
 
 The next diagram shows the actual setup I used to do this (e.g you don't have to do the same, but I found it worked better this way for me).
 
+<div align="center">
 ![Browser](https://github.com/SimonDelord/Operator-creation/blob/main/images/Overview-Figure-2.png)
-
+</div>
 
 Each step is detailed in the following sections.
 
