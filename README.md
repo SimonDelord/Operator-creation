@@ -38,7 +38,10 @@ This "blog" / GitHub repo will then take you through all the steps I took to ach
 
 ## Overview - high sequence of steps
 
-TBD - add here the steps and a great diagram showing all those steps
+The following diagram shows the high level sequence of steps for creating and deploying your own operator (including a governance function using Red Hat ACM).
+
+![Browser](https://github.com/SimonDelord/Operator-creation/blob/main/images/Overview-Figure-1.png)
+
 
 ## First Step - Build the container images so it can receive variables at Run Time.
 
