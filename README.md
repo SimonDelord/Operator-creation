@@ -36,12 +36,18 @@ Following that demo, I then realised that it would be a lot easier if I could si
 So, it seemed like Kubernetes Operators were the way to go to achieve both.
 This "blog" / GitHub repo will then take you through all the steps I took to achieve the above.
 
-## Overview - high sequence of steps
+## Overview - High sequence of steps & Environment
 
 The following diagram shows the high level sequence of steps for creating and deploying your own operator (including a governance function using Red Hat ACM).
 
 ![Browser](https://github.com/SimonDelord/Operator-creation/blob/main/images/Overview-Figure-1.png)
 
+The next diagram shows the actual setup I used to do this (e.g you don't have to do the same, but I found it worked better this way for me).
+
+![Browser](https://github.com/SimonDelord/Operator-creation/blob/main/images/Overview-Figure-2.png)
+
+
+Each step is detailed in the following sections.
 
 ## First Step - Build the container images so it can receive variables at Run Time.
 
