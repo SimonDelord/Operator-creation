@@ -32,7 +32,9 @@ It shows the Kafka environment on ROSA and how to make the container images publ
 
 ### video 4
 
+
 It shows how to deploy the container images manually on Openshift and check the logs for each
+```
 container-1 
 
 quay.io/rhn_support_sdelord/operator-demo/python-ctner1:latest
@@ -46,9 +48,7 @@ quay.io/rhn_support_sdelord/operator-demo/python-ctner2:latest
 KAFKA_TOPIC acs-topic
 BOOTSTRAP_SERVER 172.30.175.248:9092
 WEBHOOK_ROUTE /webhook
+```
 
-
-
-Test by typing
-
+Test by using Postman
 curl -X POST http://webhook-kafka-simon-demo.apps.rosa-mw5w8.9knj.p1.openshiftapps.com/webhook -H "Content-type:application/json" -d '{"username":"simon","password":"garlic"}'
