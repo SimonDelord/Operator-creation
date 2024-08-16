@@ -40,6 +40,14 @@ This "blog" / GitHub repo will then take you through all the steps I took to ach
 
 The following diagram shows the high level sequence of steps for creating and deploying your own operator (including a governance function using Red Hat ACM).
 
+There are really 5 major steps in this:
+ - first step: build the container images
+ - second step: build the helm charts to wrap the container images
+ - third step: use the operator sdk to create the operators for each helm chart
+ - fourth step: bundle the operators so they can be included in the OpenShift OLM (Operator Lifecycle Manager)
+ - fifth step: use ACM to deploy and version control the operators
+
+
 ![Browser](https://github.com/SimonDelord/Operator-creation/blob/main/images/Overview-Figure-1.png)
 
 The next diagram shows the actual setup I used to do this (e.g you don't have to do the same, but I found it worked better this way for me).
@@ -75,4 +83,6 @@ As part of this step, we then try and automate the configuration and deployment 
 Once you have done this, you can verify that both charts deploy properly and run tests (and check the logs for each of the PoDs).
  - see here for the tests for the webhook (TBD)
  - see here for the tests for the kafka container image (TBD)
+
+## Third step - use the operator sdk to create the operators for each helm chart
 
