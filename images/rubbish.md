@@ -70,8 +70,16 @@ show the tree structure once all files have been modified
 
 ```
 tree helm-python-ctner1
-helm install helm-python-ctner1 ./helm-python-ctner1/
+helm install helm-python-ctner1 ./helm-python-ctner1/helm-python-ctner1/
+
+tree helm-python-ctner2
+helm install helm-python-ctner2 ./helm-python-ctner2/helm-python-ctner2/
+
+helm list
 ```
+
+and then you show podman to curl this stuff
+
 
 ### video 3 show both helm charts deployed and test them
 
