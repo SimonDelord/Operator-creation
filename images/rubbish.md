@@ -27,3 +27,7 @@ podman pull quay.io/rhn_support_sdelord/operator-demo/python-ctner2:latest
 ```
 
 ### video 3 
+
+It shows the Kafka environment on ROSA and how to make the container images public on Quay.io
+
+### video 4
