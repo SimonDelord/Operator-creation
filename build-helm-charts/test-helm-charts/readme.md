@@ -12,3 +12,9 @@ helm list
 ```
 
 and then you can use Postman to query both containers.
+
+Here are a couple of screenshots showing the successful deployment of the charts and then the "curl" message via Postman.
+
+![Browser](https://github.com/SimonDelord/Operator-creation/tree/main/build-helm-charts/test-helm-charts/images/helm-charts-deployed.png)
+
+![Browser](https://github.com/SimonDelord/Operator-creation/tree/main/build-helm-charts/test-helm-charts/images/postman-screenshot.png)
