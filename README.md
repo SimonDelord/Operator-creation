@@ -44,6 +44,11 @@ The following diagram shows the high level sequence of steps for creating and de
 
 The next diagram shows the actual setup I used to do this (e.g you don't have to do the same, but I found it worked better this way for me).
 
+Basically, I have an OpenShift cluster (ROSA here) onto which I have both the ACM and OLM functions deployed.
+I have then split my "development" functions over two jumphosts:
+ -  one RHEL host for Podman (to build the container images) and the opm cli (used for creating the bundle image used in Step 4).
+ -  my standard Jumphost to do all Kubernetes related things (oc cli, Helm) and the operator-sdk cli.
+
 <div align="center">
    <img src="https://github.com/SimonDelord/Operator-creation/blob/main/images/Overview-Figure-2.png">
 </div>
