@@ -58,7 +58,7 @@ I have then split my "development" functions over two jumphosts:
  -  my standard Jumphost to do all Kubernetes related things (oc cli, Helm) and the operator-sdk cli.
 
 <div align="center">
-   <img src="https://github.com/SimonDelord/Operator-creation/blob/main/images/Overview-Figure-2.png">
+   <img src="https://github.com/SimonDelord/Operator-creation/blob/main/images/Overview-Figure-3.png">
 </div>
 
 Each step is detailed in the following sections.
