@@ -86,8 +86,7 @@ As part of this step, we then try and automate the configuration and deployment 
  - see [here](https://github.com/SimonDelord/Operator-creation/tree/main/build-helm-charts/helm-kafka) for the detailed helm chart for the kafka consumer producer image
 
 Once you have done this, you can verify that both charts deploy properly and run tests (and check the logs for each of the PoDs).
- - see here for the tests for the webhook (TBD)
- - see here for the tests for the kafka container image (TBD)
+ - see [here](https://github.com/SimonDelord/Operator-creation/tree/main/build-helm-charts/test-helm-charts) for the tests for both helm charts
 
 ## Third step - use the operator sdk to create the operators for each helm chart
 
