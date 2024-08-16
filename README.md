@@ -76,7 +76,7 @@ The first step of this demo is to build container images, the details around how
  - in this folder for the kafka consumer/producer container [here](https://github.com/SimonDelord/Operator-creation/tree/main/build-container-image/kafka-consumer)
 
 Once you have done this, you can then verify that these two images can be deployed on OpenShift:
- - in this folder, I have given an example on how to do it from the OpenShift console [here](https://github.com/SimonDelord/Operator-creation/tree/main/build-container-image/Test-kafka-consumer)
+ - in this folder, I have given an example on how to do it from the OpenShift console [here](https://github.com/SimonDelord/Operator-creation/tree/main/build-container-image/Test-kafka-consumer) and [here](https://github.com/SimonDelord/Operator-creation/tree/main/build-container-image/Test-webhook-kafka)
 
 ## Second Step - Build a Helm Chart to deploy your container image and associated Kubernetes artefacts
 
