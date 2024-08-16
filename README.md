@@ -52,13 +52,18 @@ There are really 5 major steps in this:
 
 The next diagram shows the actual setup I used to do this (e.g you don't have to do the same, but I found it worked better this way for me).
 
-Basically, I have an OpenShift cluster (ROSA here) onto which I have both the ACM and OLM functions deployed. I also use quay.io to upload my various container images (base containers for step 1, operator container images for 3 and bundle container images for step 4).
+Basically, I have:
+
+ - an OpenShift cluster (ROSA here) onto which I have both the ACM, OLM and Kafka (Red Hat AMQ Streams) functions deployed.
+ - I use quay.io to upload my various container images (base containers for step 1, operator container images for step 3 and bundle container images for step 4).
+   
 I have then split my "development" functions over two jumphosts:
- -  one RHEL host for Podman (to build the container images) and the opm cli (used for creating the bundle image used in Step 4).
- -  my standard Jumphost to do all Kubernetes related things (oc cli, Helm) and the operator-sdk cli.
+
+ - one RHEL host for Podman (to build the container images) and the opm cli (used for creating the bundle image used in Step 4).
+ - my standard Jumphost to do all Kubernetes related things (oc cli, Helm) and the operator-sdk cli.
 
 <div align="center">
-   <img src="https://github.com/SimonDelord/Operator-creation/blob/main/images/Overview-Figure-3.png">
+   <img src="https://github.com/SimonDelord/Operator-creation/blob/main/images/Overview-Figure-4.png">
 </div>
 
 Each step is detailed in the following sections.
