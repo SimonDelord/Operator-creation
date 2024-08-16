@@ -25,8 +25,11 @@ Then paste the url for the container image (here - quay.io/rhn_support_sdelord/k
 
 Then click on Deployment where "Click on the names to access advanced options for Health checks, Deployments, Scaling, Resource limits and Labels to add the variables.
 
-![Browser](https://github.com/SimonDelord/Operator-creation/blob/main/build-container-image/Test-webhook-kafka/images/Creating-From-container-image-1.png)
-![Browser](https://github.com/SimonDelord/Operator-creation/blob/main/build-container-image/Test-webhook-kafka/images/Creating-From-container-image-2.png)
+![Browser](https://github.com/SimonDelord/Operator-creation/blob/main/build-container-image/Test-webhook-kafka/images/config-1.png)
+![Browser](https://github.com/SimonDelord/Operator-creation/blob/main/build-container-image/Test-webhook-kafka/images/config-2.png)
+![Browser](https://github.com/SimonDelord/Operator-creation/blob/main/build-container-image/Test-webhook-kafka/images/config-3.png)
+![Browser](https://github.com/SimonDelord/Operator-creation/blob/main/build-container-image/Test-webhook-kafka/images/config-4.png)
+
 
 <p align=center>  Deploying the Container Image from OCP Console </p>
 
@@ -37,10 +40,11 @@ To test that the webhook is up and running you can run the following command
 
 ```
 so in the example with the screenshots above
-
 ```
 curl -X POST https://webhook-kafka-simon-demo.apps.rosa-2h58p.b3ox.p1.openshiftapps.com/webhook -H "Content-type:application/json" -d '{"name":"simon","password":"cheese"}'
 ```
 
 which gives the following logs (before and after the curl command)
 
+![Browser](https://github.com/SimonDelord/Operator-creation/blob/main/build-container-image/Test-webhook-kafka/images/logs-before-curl.png)
+![Browser](https://github.com/SimonDelord/Operator-creation/blob/main/build-container-image/Test-webhook-kafka/images/logs-after-curl.png)
