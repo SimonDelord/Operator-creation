@@ -49,6 +49,9 @@ KAFKA_TOPIC acs-topic
 BOOTSTRAP_SERVER 172.30.175.248:9092
 WEBHOOK_ROUTE /webhook
 ```
-
 Test by using Postman
 curl -X POST http://webhook-kafka-simon-demo.apps.rosa-mw5w8.9knj.p1.openshiftapps.com/webhook -H "Content-type:application/json" -d '{"username":"simon","password":"garlic"}'
+```
+
+## step 1 - build container images
+
