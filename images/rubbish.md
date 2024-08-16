@@ -50,8 +50,39 @@ BOOTSTRAP_SERVER 172.30.175.248:9092
 WEBHOOK_ROUTE /webhook
 ```
 Test by using Postman
+```
 curl -X POST http://webhook-kafka-simon-demo.apps.rosa-mw5w8.9knj.p1.openshiftapps.com/webhook -H "Content-type:application/json" -d '{"username":"simon","password":"garlic"}'
 ```
 
-## step 1 - build container images
+## step 2 - build helm chart
+
+### video 1 build the chart
+show how to build helm charts
+
+```
+helm create helm-python-ctner1
+tree helm-python-ctner1
+
+```
+
+### video 2 show the tree structure and deploy to openshift
+show the tree structure once all files have been modified
+
+```
+tree helm-python-ctner1
+helm install helm-python-ctner1 ./helm-python-ctner1/
+```
+
+### video 3 show both helm charts deployed and test them
+
+show in the openshift console both helm chart deployed
+show postman to curl this stuff and the logs on the PoDs
+
+
+
+
+
+
+
+
 
