@@ -2,7 +2,7 @@
 
 ## step 1 - build container images
 
-### video 1
+### video 1 build first container
 ```
 tree python-ctner1
 cd python-ctner1
@@ -14,7 +14,7 @@ podman push localhost/kafka-consumer:latest quay.io/rhn_support_sdelord/operator
 podman pull quay.io/rhn_support_sdelord/operator-demo/python-ctner1:latest
 ```
 
-### video 2
+### video 2 build second container
 ```
 tree python-ctner2
 cd python-ctner2
@@ -25,3 +25,5 @@ podman push localhost/kafka-consumer:latest quay.io/rhn_support_sdelord/operator
 
 podman pull quay.io/rhn_support_sdelord/operator-demo/python-ctner2:latest
 ```
+
+### video 3 
