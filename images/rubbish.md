@@ -158,6 +158,26 @@ operator-sdk bundle validate $BUNDLE_IMG
 operator-sdk run bundle quay.io/rhn_support_sdelord/op-python-ctner2-bundle:latest
 ```
 
-### video 3 Do a manual setup of the automated view before
+### video 3 Do a manual setup of the automated view before - first step is the CatalogFile and associated ContainerImage
 
 show the various files - CatalogFile
+Get onto the RHEL8 jumphost
+
+mkdir -p python-ctner1-catalog/python-ctner2-operator
+opm generate dockerfile python-ctner2-catalog
+
+vi python-ctner2-catalog.yaml
+
+Schema: olm.semver
+GenerateMajorChannels: true
+GenerateMinorChannels: false
+Stable:
+  Bundles:
+  - Image: quay.io/rhn_support_sdelord/op-python-ctner2-bundle:latest
+
+opm alpha render-template semver -o yaml < python-ctner2-catalog.yaml > python-ctner2-catalog/catalog.yaml
+opm validate python-ctner2-catalog
+echo $?
+
+podman build . -f python-ctner2-catalog.Dockerfile -t quay.io/rhn_support_sdelord/python-ctner2-catalog:latest
+podman push quay.io/rhn_support_sdelord/python-ctner2-catalog:latest
