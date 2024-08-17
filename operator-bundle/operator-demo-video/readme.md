@@ -81,7 +81,7 @@ opm generate dockerfile python-ctner1-catalog/
 
 then create the catalog file 
 ```
-$ cat python-ctner-catalog.yaml
+$ cat python-ctner1-catalog.yaml
 Schema: olm.semver
 GenerateMajorChannels: true
 GenerateMinorChannels: false
