@@ -103,6 +103,19 @@ operator-sdk init --plugins=helm --helm-chart-repo /home/ec2-user/Operator-SRE/h
 operator-sdk create api --helm-chart=/home/ec2-user/Operator-SRE/helm-charts-videos-youtube/helm-python-ctner1/helm-python-ctner1/
 ```
 
+### video 2 - push the container image of the operator to quay
+```
+make docker-build docker-push IMG=${IMAGE}
+```
+make it visible in quay
+```
+make install
+make deploy IMG=${IMAGE}
+
+make undeploy
+```
+
+
 
 
 
