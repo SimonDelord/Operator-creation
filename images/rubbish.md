@@ -162,7 +162,7 @@ operator-sdk run bundle quay.io/rhn_support_sdelord/op-python-ctner2-bundle:late
 
 show the various files - CatalogFile
 Get onto the RHEL8 jumphost
-
+```
 mkdir -p python-ctner1-catalog/python-ctner2-operator
 opm generate dockerfile python-ctner2-catalog
 
@@ -181,3 +181,4 @@ echo $?
 
 podman build . -f python-ctner2-catalog.Dockerfile -t quay.io/rhn_support_sdelord/python-ctner2-catalog:latest
 podman push quay.io/rhn_support_sdelord/python-ctner2-catalog:latest
+```
