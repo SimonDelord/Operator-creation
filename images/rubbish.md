@@ -133,4 +133,31 @@ make undeploy
 
 
 
+## Step 4 - Do the Operator Bundle
 
+### video 1 - use the operator SDK to create the bundle
+
+```
+export IMG=quay.io/rhn_support_sdelord/op-python-ctner2:v1.0.0
+export BUNDLE_IMG=quay.io/rhn_support_sdelord/op-python-ctner2-bundle
+
+make bundle
+
+tree bundle
+```
+
+### video 2 show the "icon" and then build this operator
+
+```
+make bundle-build bundle-push
+```
+make it visible in Quay
+
+```
+operator-sdk bundle validate $BUNDLE_IMG
+operator-sdk run bundle quay.io/rhn_support_sdelord/op-python-ctner2-bundle:latest
+```
+
+### video 3 Do a manual setup of the automated view before
+
+show the various files - CatalogFile
