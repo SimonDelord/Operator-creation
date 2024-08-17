@@ -182,3 +182,32 @@ echo $?
 podman build . -f python-ctner2-catalog.Dockerfile -t quay.io/rhn_support_sdelord/python-ctner2-catalog:latest
 podman push quay.io/rhn_support_sdelord/python-ctner2-catalog:latest
 ```
+
+### video 4 - create the catalog Source
+create the catalog source on the normal jumphost (Simon's jumphost) and do this
+```
+vi catalog-source-op-python-ctner2.yaml
+
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  annotations:
+    operators.operatorframework.io/index-image: 'quay.io/operator-framework/opm:latest'
+  name: python-ctner2-catalog
+  namespace: simon-demo
+spec:
+  displayName: python-ctner2-catalog
+  grpcPodConfig:
+    securityContextConfig: legacy
+  publisher: operator-sdk
+  image: quay.io/rhn_support_sdelord/python-ctner2-catalog:latest
+  secrets:
+    - ''
+  sourceType: grpc
+```
+amd then deploy it
+```
+oc apply -f catalog-source-op-python-ctner2.yaml
+```
+
+
