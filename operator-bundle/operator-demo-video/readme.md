@@ -73,7 +73,7 @@ opm generate dockerfile python-ctner1-catalog/
 ```
 
 then create the catalog file 
-
+```
 $ cat simon-catalog.yaml
 Schema: olm.semver
 GenerateMajorChannels: true
@@ -81,13 +81,16 @@ GenerateMinorChannels: false
 Stable:
   Bundles:
   - Image: quay.io/rhn_support_sdelord/op-python-ctner1-bundle:latest
-
-
+```
+```
 opm alpha render-template semver -o yaml < python-ctner1-catalog.yaml > python-ctner1-catalog/catalog.yaml
 
 $ opm validate python-ctner1-catalog
 $ echo $?
 0
-
+```
+Then build the image and push it to quay
+```
 podman build . -f python-ctner1-catalog.Dockerfile -t quay.io/rhn_support_sdelord/python-ctner1-catalog:latest
 podman push quay.io/rhn_support_sdelord/python-ctner1-catalog:latest
+```
