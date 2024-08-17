@@ -9,20 +9,12 @@ mkdir -p ${OPERATOR_PROJECT}
 
 operator-sdk init --plugins=helm --helm-chart-repo /home/ec2-user/Operator-SRE/helm-chart-25-07-24/webhook-kafka/
 operator-sdk create api --helm-chart=/home/ec2-user/Operator-SRE/helm-chart-25-07-24/webhook-kafka/
-
-docker login quay.io -u $DOCKER_USERNAME
-make docker-build docker-push IMG=${IMAGE}
 ```
-don't forget to make it visible in quay.io
+The operator-sdk creates a group of files (using Kustomize) and you need to modify a few of them before pushing into Quay the operator image.
+ - first, you need to modify the config/rbac/role.yaml
+ - second you need to increase the default for cpu and memories in the config/default/manager_auth_proxy_patch.yaml and config/manager/manager.yaml
 
-then you deploy the operator
-
-```
-cd webhook-kafka-operator-project/
-```
-
-you may have to create a set of roles or grand them rights
-ok there are multiple "tweaks" I had to do to get this shit running
+### First Tweak
 
 first tweak -
 need to give proper permissions in the rbac folder 
@@ -53,6 +45,9 @@ rules:
     nonResourceURLs:
       - '*'
 ```
+
+### Second tweak
+
 Next!!!
 change the default memory/cpu allocations for the Operator deployment (again not sure why they're so low, makes no sense).
 so in 
@@ -64,9 +59,25 @@ to check where to make modifications you can search the word memory using the fo
 
 ```
 grep -Rnw 'config/' -e 'memory'
+config/default/manager_auth_proxy_patch.yaml:31:            memory: 128Mi
+config/default/manager_auth_proxy_patch.yaml:34:            memory: 64Mi
+config/manager/manager.yaml:96:            memory: 128Mi
+config/manager/manager.yaml:99:            memory: 64Mi
 ```
 
+Once you have made those changes you are ready to upload the operator image in Quay.io
+
 ```
+docker login quay.io -u $DOCKER_USERNAME
+make docker-build docker-push IMG=${IMAGE}
+```
+don't forget to make it visible in quay.io
+
+
+You can then deploy the operator
+
+```
+cd webhook-kafka-operator-project/
 make install  (be sure to be in the folder where there is a MakeFile to run this command, so you may have to go back one up)....
 make deploy IMG=${IMAGE}
 ```
