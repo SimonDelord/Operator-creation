@@ -1,6 +1,10 @@
 Repo for the videos I'm doing on the Operator stuff.
 
-## Step 1
+There is an "automated" process in which the operator-sdk does all the deployment for you, however you can't really GitOps it. So there is also an "manual process" which effictively is doing what the operator-sdk is doing, this manual process can then be GitOpsed.
+
+
+## Step 1 - For both operator-sdk and manual process - 
+
 First you create a couple of variables representing the operator you created in the previous step
 for me it was op-python-ctner1:v1.0.0 and then an associated "Bundle image" (e.g the image used by OLM).
 
@@ -34,6 +38,9 @@ then you can go and modify the icon in the bundle/manifests/op-python-ctner1.clu
 
 ```
 make bundle-build bundle-push #this push the Container Image of the Operator Bundle into Quay.io"
+```
+## Operator-SDK approach
+```
 operator-sdk bundle validate $BUNDLE_IMG
 operator-sdk run bundle quay.io/rhn_support_sdelord/op-python-ctner1-bundle:latest
 (if you do the command above without the version it seems to fuck up). 
@@ -57,14 +64,14 @@ INFO[0092]   Found ClusterServiceVersion "simon-demo/op-python-ctner1.v0.0.1" ph
 INFO[0092] OLM has successfully installed "op-python-ctner1.v0.0.1"
 ```
 
-### manual setup
+## manual setup
 The manual setup of on-boarding the operator into the catalog is the following:
 
  - create a CatalogFile (either via Raw Catalog Files or using the Catalog File template) and via the opm cli create a container image of this catalog file and point your catalogSource towards it
  - create a catalogSource (and point it to the image that was created in the previous step)
  - create a subscription (e.g as a way of installing the operator bundle)
 
-## Create the catalog File
+### Create the catalog File
 connect onto the RHEL8 jumphost
 
 ```
@@ -95,7 +102,7 @@ podman build . -f python-ctner1-catalog.Dockerfile -t quay.io/rhn_support_sdelor
 podman push quay.io/rhn_support_sdelord/python-ctner1-catalog:latest
 ```
 
-## Create the Catalog Source
+### Create the Catalog Source
 Back to the main jumphost (e.g simon's jumphost)
 
 create a source catalog file - called catalog-source-op-python-ctner1.yaml
@@ -125,7 +132,7 @@ catalogsource.operators.coreos.com/python-ctner1-catalog created
 ```
 wait a few seconds and the icon should appear in the Operator Hub.
 
-## Create the Subscription
+### Create the Subscription
 you then need to create the subcription (e.g it's the deployment of the Operator from the Catalog to a specific namespace)
 
 ```
