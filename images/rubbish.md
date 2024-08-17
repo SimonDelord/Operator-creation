@@ -125,9 +125,11 @@ oc apply -f config/samples/charts_v1alpha1_helmpythonctner1.yaml
 ```
 start to scale up and down
 
+```
 make undeploy
 ```
 
+### video 4 - show both operators running and two instances running too
 
 
 
