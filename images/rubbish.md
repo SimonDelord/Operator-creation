@@ -111,6 +111,19 @@ make it visible in quay
 ```
 make install
 make deploy IMG=${IMAGE}
+```
+you now have one control manager running in its own namespace
+
+### video 3 - deploy one instance of this operator and start fucking around with it
+
+```
+ls
+tree config/
+go into the logs of the operator
+
+oc apply -f config/samples/charts_v1alpha1_helmpythonctner1.yaml
+```
+start to scale up and down
 
 make undeploy
 ```
