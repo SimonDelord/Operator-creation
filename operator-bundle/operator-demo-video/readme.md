@@ -60,6 +60,34 @@ INFO[0092] OLM has successfully installed "op-python-ctner1.v0.0.1"
 ### manual setup
 The manual setup of on-boarding the operator into the catalog is the following:
 
-create a CatalogFile (either via Raw Catalog Files or using the Catalog File template) and via the opm cli create a container image of this catalog file and point your catalogSource towards it
-create a catalogSource (and point it to the image that was created in the previous step)
-create a subscription (e.g as a way of installing the operator bundle)
+ - create a CatalogFile (either via Raw Catalog Files or using the Catalog File template) and via the opm cli create a container image of this catalog file and point your catalogSource towards it
+ - create a catalogSource (and point it to the image that was created in the previous step)
+ - create a subscription (e.g as a way of installing the operator bundle)
+
+## Create the catalog File
+connect onto the RHEL8 jumphost
+
+```
+mkdir -p python-ctner1-catalog/python-ctner1-operator
+opm generate dockerfile python-ctner1-catalog/
+```
+
+then create the catalog file 
+
+$ cat simon-catalog.yaml
+Schema: olm.semver
+GenerateMajorChannels: true
+GenerateMinorChannels: false
+Stable:
+  Bundles:
+  - Image: quay.io/rhn_support_sdelord/op-python-ctner1-bundle:latest
+
+
+opm alpha render-template semver -o yaml < python-ctner1-catalog.yaml > python-ctner1-catalog/catalog.yaml
+
+$ opm validate python-ctner1-catalog
+$ echo $?
+0
+
+podman build . -f python-ctner1-catalog.Dockerfile -t quay.io/rhn_support_sdelord/python-ctner1-catalog:latest
+podman push quay.io/rhn_support_sdelord/python-ctner1-catalog:latest
