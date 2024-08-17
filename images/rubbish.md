@@ -87,8 +87,21 @@ show in the openshift console both helm chart deployed
 show postman to curl this stuff and the logs on the PoDs
 
 
+## step 3 build operators using sdk
+### video 1 - build operator for ctner1 using operator-sdk
 
+export OPERATOR_NAME=op-python-ctner1
+export OPERATOR_PROJECT=op-python-ctner1
+export OPERATOR_VERSION=v1.0.0
+export DOCKER_USERNAME=rhn_support_sdelord
+export IMAGE=quay.io/${DOCKER_USERNAME}/${OPERATOR_NAME}:${OPERATOR_VERSION}
+mkdir -p ${OPERATOR_PROJECT}
 
+cd ${OPERATOR_PROJECT}
+operator-sdk init --plugins=helm --helm-chart-repo /home/ec2-user/Operator-SRE/helm-charts-videos-youtube/helm-python-ctner1/
+operator-sdk create api --helm-chart=/home/ec2-user/Operator-SRE/helm-charts-videos-youtube/helm-python-ctner1/
+ls
+tree
 
 
 
