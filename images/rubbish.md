@@ -210,4 +210,6 @@ amd then deploy it
 oc apply -f catalog-source-op-python-ctner2.yaml
 ```
 
+### video 5 - deplyo the subscription
 
+show the subscription and then deploy it
