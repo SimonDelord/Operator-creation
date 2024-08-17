@@ -90,6 +90,7 @@ show postman to curl this stuff and the logs on the PoDs
 ## step 3 build operators using sdk
 ### video 1 - build operator for ctner1 using operator-sdk
 
+```
 export OPERATOR_NAME=op-python-ctner1
 export OPERATOR_PROJECT=op-python-ctner1
 export OPERATOR_VERSION=v1.0.0
@@ -102,7 +103,7 @@ operator-sdk init --plugins=helm --helm-chart-repo /home/ec2-user/Operator-SRE/h
 operator-sdk create api --helm-chart=/home/ec2-user/Operator-SRE/helm-charts-videos-youtube/helm-python-ctner1/
 ls
 tree
-
+```
 
 
 
