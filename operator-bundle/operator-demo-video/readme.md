@@ -94,3 +94,59 @@ Then build the image and push it to quay
 podman build . -f python-ctner1-catalog.Dockerfile -t quay.io/rhn_support_sdelord/python-ctner1-catalog:latest
 podman push quay.io/rhn_support_sdelord/python-ctner1-catalog:latest
 ```
+
+## Create the Catalog Source
+Back to the main jumphost (e.g simon's jumphost)
+
+create a source catalog file - called catalog-source-op-python-ctner1.yaml
+```
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  annotations:
+    operators.operatorframework.io/index-image: 'quay.io/operator-framework/opm:latest'
+  name: python-ctner1-catalog
+  namespace: simon-demo
+spec:
+  displayName: python-ctner1-catalog
+  grpcPodConfig:
+    securityContextConfig: legacy
+  publisher: operator-sdk
+  image: quay.io/rhn_support_sdelord/python-ctner1-catalog:latest
+  secrets:
+    - ''
+  sourceType: grpc
+```
+
+you simply deploy it
+```
+oc apply -f catalog-source-op-python-ctner1.yaml
+catalogsource.operators.coreos.com/python-ctner1-catalog created
+```
+wait a few seconds and the icon should appear in the Operator Hub.
+
+## Create the Subscription
+you then need to create the subcription (e.g it's the deployment of the Operator from the Catalog to a specific namespace)
+
+```
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: op-python-ctner1
+  namespace: simon-demo
+spec:
+  channel: stable-v0
+  installPlanApproval: Automatic
+  name: op-python-ctner1
+  source: python-ctner1-catalog
+  sourceNamespace: simon-demo
+  startingCSV: op-python-ctner1.v0.0.1
+```
+and then apply it
+
+```
+oc apply -f subscription-op-python-ctner1.yaml
+```
+
+
+
